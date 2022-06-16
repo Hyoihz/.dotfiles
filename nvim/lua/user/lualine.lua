@@ -15,39 +15,61 @@ local diagnostics = {
 	colored = false,
 	update_in_insert = false,
 	always_visible = true,
+	padding = {
+		left = 2,
+		right = 2,
+	},
 }
 
 local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
 
 local mode = {
 	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
+	padding = {
+		left = 4,
+		right = 3,
+	},
 }
 
 local filetype = {
 	"filetype",
 	icons_enabled = true,
 	icon = nil,
+	padding = {
+		left = 1,
+		right = 2,
+	},
+}
+
+local filename = {
+	"filename",
+	padding = {
+		left = 2,
+	},
 }
 
 local branch = {
 	"branch",
 	icons_enabled = true,
 	icon = "",
+	padding = {
+		left = 2,
+		right = 2,
+	},
 }
 
 local location = {
 	"location",
-	padding = 0,
+	padding = {
+		left = 0,
+		right = 1,
+	},
 }
-
 
 -- cool function for progress
 local progress = function()
@@ -67,15 +89,15 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = { mode },
 		lualine_b = { branch, diagnostics },
-		lualine_c = {"filename"},
+		lualine_c = { filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
