@@ -24,19 +24,13 @@ if not lspconfig_status_ok then
 	return
 end
 
-local installed_servers = {}
-
-for _, server in pairs(lsp_installer.get_installed_servers()) do
-    table.insert(installed_servers, server.name)
-end
-
-for _, server in pairs(installed_servers) do
+for _, server in pairs(servers) do
 	local opts = {
 		on_attach = require("config.lsp.handlers").on_attach,
 		capabilities = require("config.lsp.handlers").capabilities,
 	}
 
-	local has_opts, custom_opts = pcall(require, "config.lsp.settings." .. server)
+	local has_opts, custom_opts = pcall(require, string.format("config.lsp.settings." .. server))
 	if has_opts then
 		opts = vim.tbl_deep_extend("force", custom_opts, opts)
 	end
