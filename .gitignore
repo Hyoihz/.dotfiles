@@ -53,4 +53,6 @@ luac.out
 #st
 .config/suckless/st/st.h.orig
 .config/suckless/st/x.c.orig
+.config/suckless/st/config.def.h.orig
+.config/suckless/st/st.c.orig
 
