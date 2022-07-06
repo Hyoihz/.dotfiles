@@ -69,14 +69,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-   	{ MODKEY,                       XK_Left,   focusdir,       {.i = 0 } }, // left
-	{ MODKEY,                       XK_Right,  focusdir,       {.i = 1 } }, // right
-	{ MODKEY,                       XK_Up,     focusdir,       {.i = 2 } }, // up
-	{ MODKEY,                       XK_Down,   focusdir,       {.i = 3 } }, // down
+   	{ MODKEY,                       XK_h,      focusdir,       {.i = 0 } }, // left
+	{ MODKEY,                       XK_j,      focusdir,       {.i = 3 } }, // down
+	{ MODKEY,                       XK_k,      focusdir,       {.i = 2 } }, // up
+	{ MODKEY,                       XK_l,      focusdir,       {.i = 1 } }, // right
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
