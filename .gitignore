@@ -42,18 +42,8 @@ luac.out
 # nvim
 .config/nvim/plugin/packer_compiled.lua
 
-#dwm
-.config/suckless/dwm/dwm.c.orig
-.config/suckless/dwm/.cache/
-.config/suckless/dwm/compile_commands.json
-.config/suckless/dwm/config.def.h.orig
-.config/suckless/dwm/dwm.c.rej
-.config/suckless/dwm/config.def.h.rej
-
-#st
-.config/suckless/st/st.h.orig
-.config/suckless/st/x.c.orig
-.config/suckless/st/config.def.h.orig
-.config/suckless/st/st.c.orig
-.config/suckless/st/x.c.rej
-
+# succ
+*.orig
+*.rej
+*.json
+*.cache
