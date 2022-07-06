@@ -5,7 +5,14 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+    "JetBrains Mono ExtraBold ExtBd Nerd Font:pixelsize=16:antialias=true:autohint=true",
+    "JetBrains Mono Medium Italic Nerd Font:pixelsize=16:antialias=true:autohint=true",
+    "JetBrains Mono Bold Italic Nerd Font:pixelsize=16:antialias=true:autohint=true",
+};
+
 static int borderpx = 2;
 
 /*
