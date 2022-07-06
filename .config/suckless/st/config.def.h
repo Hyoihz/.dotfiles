@@ -13,7 +13,7 @@ static char *font2[] = {
     // "JetBrains Mono Bold Italic Nerd Font:pixelsize=16:antialias=true:autohint=true",
 };
 
-static int borderpx = 2;
+static int borderpx = 15;
 
 /*
  * What program is execed by st depends of these precedence rules:

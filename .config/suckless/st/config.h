@@ -13,7 +13,7 @@ static char *font2[] = {
     // "JetBrains Mono Bold Italic Nerd Font:pixelsize=16:antialias=true:autohint=true",
 };
 
-static int borderpx = 2;
+static int borderpx = 15;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -151,8 +151,8 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 258;
 unsigned int defaultbg = 259;
-unsigned int defaultcs = 240;
-static unsigned int defaultrcs = 240;
+unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
