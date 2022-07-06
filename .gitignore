@@ -50,3 +50,7 @@ luac.out
 .config/suckless/dwm/dwm.c.rej
 .config/suckless/dwm/config.def.h.rej
 
+#st
+.config/suckless/st/st.h.orig
+.config/suckless/st/x.c.orig
+
