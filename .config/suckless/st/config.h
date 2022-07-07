@@ -8,9 +8,6 @@
 static char *font = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-    // "JetBrains Mono ExtraBold ExtBd Nerd Font:pixelsize=16:antialias=true:autohint=true",
-    // "JetBrains Mono Medium Italic Nerd Font:pixelsize=16:antialias=true:autohint=true",
-    // "JetBrains Mono Bold Italic Nerd Font:pixelsize=16:antialias=true:autohint=true",
 };
 
 static int borderpx = 15;
@@ -113,7 +110,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.85;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
