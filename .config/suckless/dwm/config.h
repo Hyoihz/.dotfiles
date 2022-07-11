@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
@@ -14,35 +14,34 @@ static const int user_bh            = 22;    /* 2 is the default spacing around 
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = {	
     "JetBrains Mono Medium Nerd Font:pixelsize=14:antialias=true:autohint=true", 
-    "Material Design Icons Desktop:pixelsize=14:antialias=true:autohint=true",
+    "Material Design Icons Desktop:style=medium:pixelsize=14:antialias=true:autohint=true",
     "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_red[]         = "#f7768e";
-static const char col1[]            = "#ffffff";
-static const char col2[]            = "#ffffff";
-static const char col3[]            = "#ffffff";
-static const char col4[]            = "#ffffff";
-static const char col5[]            = "#ffffff";
-static const char col6[]            = "#ffffff";
+static const char col_gray1[]       = "#1a1b26";
+static const char col_gray2[]       = "#db4b4b";
+static const char col_gray3[]       = "#c0caf5";
+static const char col_gray4[]       = "#a9b1d6";
+static const char col1[]            = "#e0af68";
+static const char col2[]            = "#7aa2f7";
+static const char col3[]            = "#9ece6a";
+static const char col4[]            = "#bb9af7";
+static const char col5[]            = "#bb9af7";
+static const char col6[]            = "#bb9af7";
 
 enum { SchemeNorm, SchemeCol1, SchemeCol2, SchemeCol3, SchemeCol4,
        SchemeCol5, SchemeCol6, SchemeSel }; /* color schemes */
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm]  = { col_gray3, col_gray1, col_gray1 },
 	[SchemeCol1]  = { col1,      col_gray1, col_gray2 },
 	[SchemeCol2]  = { col2,      col_gray1, col_gray2 },
 	[SchemeCol3]  = { col3,      col_gray1, col_gray2 },
 	[SchemeCol4]  = { col4,      col_gray1, col_gray2 },
 	[SchemeCol5]  = { col5,      col_gray1, col_gray2 },
 	[SchemeCol6]  = { col6,      col_gray1, col_gray2 },
-	[SchemeSel]   = { col_gray4, col_red,  col_red  },
+	[SchemeSel]   = { col_gray4, col_gray1, col_gray2 },
 };
 
 /* tagging */
@@ -86,7 +85,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_red, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
