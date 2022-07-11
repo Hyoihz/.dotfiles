@@ -6,12 +6,14 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = {	
-    "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true", 
+    "JetBrains Mono Medium Nerd Font:pixelsize=14:antialias=true:autohint=true", 
+    "Material Design Icons Desktop:pixelsize=14:antialias=true:autohint=true",
     "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
