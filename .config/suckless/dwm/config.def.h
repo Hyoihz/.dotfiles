@@ -14,7 +14,7 @@ static const int user_bh            = 22;    /* 2 is the default spacing around 
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = {	
     "JetBrains Mono Medium Nerd Font:pixelsize=14:antialias=true:autohint=true", 
-    "Material Design Icons Desktop:style=medium:pixelsize=14:antialias=true:autohint=true",
+    "Material Design Icons Desktop:pixelsize=14:antialias=true:autohint=true",
     "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
