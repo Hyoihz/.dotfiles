@@ -13,39 +13,63 @@ static const int showbar            = 1;     /* 0 means no bar */
 static const int user_bh            = 22;    /* 2 is the default spacing around the bar's font */
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = {	
-    "JetBrains Mono Medium Nerd Font:pixelsize=14:antialias=true:autohint=true", 
-    "Material Design Icons Desktop:pixelsize=14:antialias=true:autohint=true",
-    "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true"
+    "JetBrains Mono Medium Nerd Font:pixelsize=15:antialias=true:autohint=true", 
+    "Material Design Icons Desktop:pixelsize=20:antialias=true:autohint=true",
+    "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 };
+static const unsigned int colorfultag    = 1;  /* 0 means use SchemeSel for selected tag */
 static const char dmenufont[]       = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
-static const char col_gray1[]       = "#1a1b26";
-static const char col_gray2[]       = "#db4b4b";
-static const char col_gray3[]       = "#c0caf5";
-static const char col_gray4[]       = "#a9b1d6";
-static const char col1[]            = "#e0af68";
-static const char col2[]            = "#7aa2f7";
-static const char col3[]            = "#9ece6a";
-static const char col4[]            = "#bb9af7";
-static const char col5[]            = "#bb9af7";
-static const char col6[]            = "#bb9af7";
 
-enum { SchemeNorm, SchemeCol1, SchemeCol2, SchemeCol3, SchemeCol4,
-       SchemeCol5, SchemeCol6, SchemeSel }; /* color schemes */
+static const char col_dark[]             = "#16161E";
+static const char col_dark_1[]           = "#232433";
+static const char col_dark_2[]           = "#2a2b3d";
+static const char col_dark_3[]           = "#3b3d57";
+static const char col_black[]            = "#32344a";
+static const char col_br_black[]         = "#545862";
+static const char col_white[]            = "#787c99";
+static const char col_br_white[]         = "#acb0d0";
+static const char col_red[]              = "#f7768e";
+static const char col_br_red[]           = "#ff7a93";
+static const char col_green[]            = "#9ece6a";
+static const char col_br_green[]         = "#b9f27c";
+static const char col_yellow[]           = "#e0af68";
+static const char col_br_yellow[]        = "#ff9e64";
+static const char col_blue[]             = "#7aa2f7";
+static const char col_br_blue[]          = "#7da6ff";
+static const char col_magenta[]          = "#ad8ee6";
+static const char col_br_magenta[]       = "#bb9af7";
+static const char col_cyan[]             = "#449dab";
+static const char col_br_cyan[]          = "#0db9d7";
+static const char col_bg[]               = "#1a1b26";
+static const char col_fg[]               = "#a9b1d6";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1, col_gray1 },
-	[SchemeCol1]  = { col1,      col_gray1, col_gray2 },
-	[SchemeCol2]  = { col2,      col_gray1, col_gray2 },
-	[SchemeCol3]  = { col3,      col_gray1, col_gray2 },
-	[SchemeCol4]  = { col4,      col_gray1, col_gray2 },
-	[SchemeCol5]  = { col5,      col_gray1, col_gray2 },
-	[SchemeCol6]  = { col6,      col_gray1, col_gray2 },
-	[SchemeSel]   = { col_gray4, col_gray1, col_gray2 },
+	[SchemeNorm]  = { col_fg, col_bg, col_black },
+	[SchemeSel]   = { col_fg, col_bg, col_red },
+	[SchemeCol1]  = { col_yellow,      col_bg, col_black },
+	[SchemeCol2]  = { col_blue,      col_bg, col_black },
+	[SchemeCol3]  = { col_green,      col_bg, col_black },
+	[SchemeCol4]  = { col_magenta,      col_bg, col_black },
+	[SchemeCol5]  = { col_cyan,      col_bg, col_black },
+	[SchemeCol6]  = { col_red,      col_bg, col_black },
+	[SchemeTag]   = { col_br_black, col_bg, col_black },
+	[SchemeTag1]   = { col_br_white, col_bg, col_black },
+	[SchemeTag2]   = { col_br_yellow, col_bg, col_black },
+	[SchemeTag3]   = { col_green, col_bg, col_black },
+	[SchemeTag4]   = { col_br_cyan, col_bg, col_black },
+	[SchemeTag5]   = { col_blue, col_bg, col_black },
+	[SchemeTag6]   = { col_magenta, col_bg, col_black },
+	[SchemeTag7]   = { col_br_red, col_bg, col_black },
+	[SchemeLayout]   = { col_white, col_bg, col_black },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "󰒓 ", " 󰈹 ", " 󰓇 ", " 󰝰 ", " 󰇮 ", " 󰠾 ", " 󱎶 " };
+
+static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
+                                  SchemeTag4, SchemeTag5, SchemeTag6,
+                                  SchemeTag7 };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -65,9 +89,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "[💀]",      tile },    /* first entry is default */
+	{ "[👻]",      NULL },    /* no layout function means floating behavior */
+	{ "👽",      monocle },
 };
 
 /* key definitions */
@@ -85,7 +109,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_black, "-sf", col_fg, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
