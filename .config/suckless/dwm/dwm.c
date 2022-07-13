@@ -2800,6 +2800,8 @@ updatetitle(Client *c)
 		gettextprop(c->win, XA_WM_NAME, c->name, sizeof c->name);
 	if (c->name[0] == '\0') /* hack to mark broken clients */
 		strcpy(c->name, broken);
+    if (strlen(c->name) >= 30)
+        strncpy(&c->name[28], "...", 4);
 }
 
 void
