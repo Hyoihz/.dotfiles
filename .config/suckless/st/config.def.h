@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-
 /*
  * appearance
  *
@@ -8,6 +7,8 @@
 static char *font = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
+    "DejaVu Sans Mono for Powerline:pixelsize=16:antialias=true:autohint=true",
+    "Material Design Icons Desktop:pixelsize=16:antialias=true:autohint=true",
 };
 
 static int borderpx = 15;
