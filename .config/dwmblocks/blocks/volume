@@ -1,0 +1,15 @@
+#!/bin/sh
+
+VOL="$(pamixer --get-volume)"
+
+if [ "$(pamixer --get-mute)" = true ]; then
+    printf "\x0d󰝟 Muted\x0b " 
+elif [ "$VOL" -ge "70" ]; then
+    printf "\x0d󰕾 %s%%\x0b " "$VOL"
+elif [ "$VOL" -ge "30" ]; then
+    printf "\x0d󰖀 %s%%\x0b " "$VOL"
+elif [ "$VOL" -ge "1" ]; then
+    printf "\x0d󰕿 %s%%\x0b " "$VOL"
+else
+    printf "\x0d󰖁 %s%%\x0b " "$VOL"
+fi

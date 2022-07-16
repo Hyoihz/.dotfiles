@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$1" in
+    1) brillo -S 16 ;;
+    4) brillo -A 1 -q ;;
+    5) brillo -U 1 -q ;;
+esac
+
+kill -35 "$(pidof dwmblocks)"

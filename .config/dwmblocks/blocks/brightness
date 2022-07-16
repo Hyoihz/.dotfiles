@@ -1,0 +1,21 @@
+#!/bin/sh
+
+BRIGHTNESS=$(printf "%.0f\n" "$(brillo -G)")
+
+if [ "$BRIGHTNESS" -ge "84" ]; then
+    ICON="󰃠"
+elif [ "$BRIGHTNESS" -ge "70" ]; then
+    ICON="󰃟"
+elif [ "$BRIGHTNESS" -ge "56" ]; then
+    ICON="󰃞"
+elif [ "$BRIGHTNESS" -ge "42" ]; then
+    ICON="󰃝"
+elif [ "$BRIGHTNESS" -ge "28" ]; then
+    ICON="󰃜"
+elif [ "$BRIGHTNESS" -ge "14" ]; then
+    ICON="󰃛"
+else
+    ICON="󰃚"
+fi
+
+printf "\x0c$ICON %.0f%%\x0b " "$BRIGHTNESS"

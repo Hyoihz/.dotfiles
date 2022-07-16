@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$1" in
+    1) pamixer -t ;;
+    4) pamixer -ui 1 ;;
+    5) pamixer -ud 1 ;;
+esac
+
+kill -36 "$(pidof dwmblocks)"

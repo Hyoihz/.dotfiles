@@ -1,0 +1,23 @@
+#!/bin/sh
+
+wifi_interface="wlp3s0"
+eth_interfaces="enp4s0f1 enp0s20f0u1 enp0s20f0u3 enp0s20f0u4"
+
+internet_name=$(nmcli -t -f name connection show --active)
+
+getStatus() {
+    cat /sys/class/net/""$1/operstate
+}
+
+for eth_interface in $eth_interfaces; do
+    if [ -e /sys/class/net/$eth_interface ] && [ "$(getStatus $eth_interface)" = "up" ]; then
+        printf "\x0e󰖩 Connected\x0b "
+        exit 0
+    fi
+done
+
+if [ "$(getStatus $wifi_interface)" = "up" ]; then
+    printf "\x0e󰖩 %s\x0b " "$internet_name" 
+else
+    printf "\x0e󰖪 Disconnected\x0b "
+fi
