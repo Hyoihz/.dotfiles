@@ -20,28 +20,18 @@ static const char *fonts[]          = {
 static const unsigned int colorfultag    = 1;  /* 0 means use SchemeSel for selected tag */
 static const char dmenufont[]       = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
 
-static const char col_dark[]             = "#16161E";
-static const char col_dark_1[]           = "#232433";
-static const char col_dark_2[]           = "#2a2b3d";
-static const char col_dark_3[]           = "#3b3d57";
-static const char col_black[]            = "#32344a";
-static const char col_br_black[]         = "#545862";
-static const char col_white[]            = "#787c99";
-static const char col_br_white[]         = "#acb0d0";
-static const char col_red[]              = "#f7768e";
-static const char col_br_red[]           = "#ff7a93";
-static const char col_green[]            = "#9ece6a";
-static const char col_br_green[]         = "#b9f27c";
-static const char col_yellow[]           = "#e0af68";
-static const char col_br_yellow[]        = "#ff9e64";
-static const char col_blue[]             = "#7aa2f7";
-static const char col_br_blue[]          = "#7da6ff";
-static const char col_magenta[]          = "#ad8ee6";
-static const char col_br_magenta[]       = "#bb9af7";
-static const char col_cyan[]             = "#449dab";
-static const char col_br_cyan[]          = "#0db9d7";
-static const char col_bg[]               = "#1a1b26";
-static const char col_fg[]               = "#a9b1d6";
+static const char col_bg[]       = "#1E1E2E";
+static const char col_fg[]       = "#CDD6F4";
+static const char col_black[]       = "#46575A";
+static const char col_br_black[]       = "#585B70";
+static const char col_red[]       = "#F38BA8";
+static const char col_green[]       = "#A6E3A1";
+static const char col_yellow[]       = "#F9E2AF";
+static const char col_blue[]       = "#89B4FA";
+static const char col_magenta[]       = "#F5C2E7";
+static const char col_cyan[]       = "#94E2D5";
+static const char col_white[]       = "#BAC2DE";
+static const char col_br_white[]       = "#A6ADC8";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -49,18 +39,18 @@ static const char *colors[][3]      = {
 	[SchemeSel]   = { col_fg, col_bg, col_red },
 	[SchemeCol1]  = { col_yellow,      col_bg, col_black },
 	[SchemeCol2]  = { col_blue,      col_bg, col_black },
-	[SchemeCol3]  = { col_green,      col_bg, col_black },
+	[SchemeCol3]  = { col_cyan,      col_bg, col_black },
 	[SchemeCol4]  = { col_magenta,      col_bg, col_black },
-	[SchemeCol5]  = { col_cyan,      col_bg, col_black },
+	[SchemeCol5]  = { col_green,      col_bg, col_black },
 	[SchemeCol6]  = { col_red,      col_bg, col_black },
 	[SchemeTag]   = { col_br_black, col_bg, col_black },
 	[SchemeTag1]   = { col_br_white, col_bg, col_black },
-	[SchemeTag2]   = { col_br_yellow, col_bg, col_black },
+	[SchemeTag2]   = { col_yellow, col_bg, col_black },
 	[SchemeTag3]   = { col_green, col_bg, col_black },
-	[SchemeTag4]   = { col_br_cyan, col_bg, col_black },
+	[SchemeTag4]   = { col_cyan, col_bg, col_black },
 	[SchemeTag5]   = { col_blue, col_bg, col_black },
 	[SchemeTag6]   = { col_magenta, col_bg, col_black },
-	[SchemeTag7]   = { col_br_red, col_bg, col_black },
+	[SchemeTag7]   = { col_red, col_bg, col_black },
 	[SchemeLayout]   = { col_white, col_bg, col_black },
 };
 
