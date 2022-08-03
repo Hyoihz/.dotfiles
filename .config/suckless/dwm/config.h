@@ -83,7 +83,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "obs",      NULL,       NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -114,7 +115,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_black, "-sf", col_fg, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_br_black, "-sf", col_blue, "-nhb", col_bg, "-nhf", col_yellow, "-shb", col_br_black, "-shf", col_green, "-h", "41", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
