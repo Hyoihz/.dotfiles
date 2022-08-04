@@ -86,7 +86,7 @@ enum { CurNormal, CurHand, CurResize, CurMove, CurLast }; /* cursor */
 enum { SchemeNorm, SchemeCol1, SchemeCol2, SchemeCol3, SchemeCol4,
        SchemeCol5, SchemeCol6, SchemeSel, SchemeTag, SchemeTag1,
        SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5, SchemeTag6, 
-       SchemeTag7, SchemeLayout, }; /* color schemes */
+       SchemeTag7, SchemeLayout, SchemeTitle }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
@@ -954,7 +954,7 @@ drawbar(Monitor *m)
             int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
             /* make sure name will not overlap on tags even when it is very long */
             mid = mid >= lrpad / 2 ? mid : lrpad / 2;
-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+			drw_setscheme(drw, scheme[m == selmon ? SchemeTitle : SchemeNorm]);
             drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);

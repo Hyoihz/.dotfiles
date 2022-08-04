@@ -51,6 +51,7 @@ static const char *colors[][3]      = {
 	[SchemeTag6]   = { col_magenta,  col_bg, col_black },
 	[SchemeTag7]   = { col_red,      col_bg, col_black },
 	[SchemeLayout] = { col_white,    col_bg, col_black },
+	[SchemeTitle]  = { col_fg,       col_bg, col_black },
 	[SchemeCol1]   = { col_yellow,   col_bg, col_black }, /* \x0c */
 	[SchemeCol2]   = { col_blue,     col_bg, col_black }, /* \x0d */
 	[SchemeCol3]   = { col_cyan,     col_bg, col_black }, /* \x0e */
@@ -60,9 +61,8 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { " 󰒓 ", " 󰈹 ", " 󰓇 ", " 󰝰 ", " 󰇮 ", " 󰠾 ", " 󱎶 " };
 
-static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
-                                  SchemeTag4, SchemeTag5, SchemeTag6,
-                                  SchemeTag7 };
+static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4,
+				  SchemeTag5, SchemeTag6, SchemeTag7 };
 
 static const unsigned int ulinepad	= 15; /* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;  /* thickness / height of the underline */
@@ -95,7 +95,6 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
