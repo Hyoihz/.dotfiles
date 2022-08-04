@@ -59,7 +59,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { " 󰒓 ", " 󰈹 ", " 󰓇 ", " 󰝰 ", " 󰇮 ", " 󰠾 ", " 󱎶 " };
+static const char *tags[] = { " 󰒓 ", " 󰈹 ", " 󰓇 ", " 󰠾 ", " 󰇮 ", " 󰝰 ", " 󱎶 " };
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4,
 				  SchemeTag5, SchemeTag6, SchemeTag7 };
@@ -77,7 +77,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "obs",      NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "obs",      NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
 /* layout(s) */
