@@ -165,6 +165,7 @@ static Key keys[] = {
 	{ Mod1Mask,                     XK_Control_R,   spawn,               SHCMD("brillo -A 5 -q; kill -35 $(pidof dwmblocks)") }, 
 	{ Mod1Mask,                     XK_slash,       spawn,               SHCMD("pulsemixer --unmute --max-volume 100 --change-volume +5; kill -36 $(pidof dwmblocks)") }, 
 	{ Mod1Mask,                     XK_Menu,        spawn,               SHCMD("pulsemixer --unmute --change-volume -5; kill -36 $(pidof dwmblocks)") }, 
+	{ Mod1Mask,                     XK_m,           spawn,               SHCMD("pulsemixer --toggle-mute; kill -36 $(pidof dwmblocks)") }, 
 	TAGKEYS(                        XK_1,                                0)
 	TAGKEYS(                        XK_2,                                1)
 	TAGKEYS(                        XK_3,                                2)
