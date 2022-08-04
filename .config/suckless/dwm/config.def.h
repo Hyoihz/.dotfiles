@@ -161,10 +161,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,       setgaps,             {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_minus,       setgaps,             {.i = GAP_RESET } },
 	{ MODKEY|ShiftMask,             XK_equal,       setgaps,             {.i = GAP_TOGGLE} },
-    { Mod1Mask,                     XK_Alt_R,       spawn,               SHCMD("brillo -U 5 -q; kill -35 $(pidof dwmblocks)") }, 
-    { Mod1Mask,                     XK_Control_R,   spawn,               SHCMD("brillo -A 5 -q; kill -35 $(pidof dwmblocks)") }, 
-    { Mod1Mask,                     XK_slash,       spawn,               SHCMD("pamixer -ui 5; kill -36 $(pidof dwmblocks)") }, 
-    { Mod1Mask,                     XK_Menu,        spawn,               SHCMD("pamixer -ud 5; kill -36 $(pidof dwmblocks)") }, 
+	{ Mod1Mask,                     XK_Alt_R,       spawn,               SHCMD("brillo -U 5 -q; kill -35 $(pidof dwmblocks)") }, 
+	{ Mod1Mask,                     XK_Control_R,   spawn,               SHCMD("brillo -A 5 -q; kill -35 $(pidof dwmblocks)") }, 
+	{ Mod1Mask,                     XK_slash,       spawn,               SHCMD("pulsemixer --unmute --max-volume 100 --change-volume +5; kill -36 $(pidof dwmblocks)") }, 
+	{ Mod1Mask,                     XK_Menu,        spawn,               SHCMD("pulsemixer --unmute --change-volume -5; kill -36 $(pidof dwmblocks)") }, 
 	TAGKEYS(                        XK_1,                                0)
 	TAGKEYS(                        XK_2,                                1)
 	TAGKEYS(                        XK_3,                                2)
