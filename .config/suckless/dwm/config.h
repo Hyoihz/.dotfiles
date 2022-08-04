@@ -138,7 +138,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,           incnmaster,          {.i = -1 } },
 	{ MODKEY,                       XK_Left,        setmfact,            {.f = -0.05} },
 	{ MODKEY,                       XK_Right,       setmfact,            {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return,      zoom,                {0} },
 	// { MODKEY,                       XK_Tab,         view,                {0} },
    	{ MODKEY,                       XK_Tab,         shiftviewclients,    { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Tab,         shiftviewclients,    { .i = -1 } },
@@ -184,7 +183,6 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },

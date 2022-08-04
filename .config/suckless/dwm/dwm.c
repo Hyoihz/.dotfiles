@@ -193,7 +193,6 @@ static void applyrules(Client *c);
 static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact);
 static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
-static void attach(Client *c);
 static void attachbottom(Client *c);
 static void attachstack(Client *c);
 static void buttonpress(XEvent *e);
@@ -237,7 +236,6 @@ static void movemouse(const Arg *arg);
 static void movecenter(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void placedir(const Arg *arg);
-static void pop(Client *);
 static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
@@ -299,7 +297,6 @@ static Client *wintosystrayicon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
-static void zoom(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
@@ -481,13 +478,6 @@ arrangemon(Monitor *m)
 	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
 	if (m->lt[m->sellt]->arrange)
 		m->lt[m->sellt]->arrange(m);
-}
-
-void
-attach(Client *c)
-{
-	c->next = c->mon->clients;
-	c->mon->clients = c;
 }
 
 void
@@ -1606,15 +1596,6 @@ placedir(const Arg *arg)
 
 		arrange(f->mon);
 	}
-}
-
-void
-pop(Client *c)
-{
-	detach(c);
-	attach(c);
-	focus(c);
-	arrange(c->mon);
 }
 
 void
@@ -2972,20 +2953,6 @@ systraytomon(Monitor *m) {
 	if(systraypinningfailfirst && n < systraypinning)
 		return mons;
 	return t;
-}
-
-void
-zoom(const Arg *arg)
-{
-	Client *c = selmon->sel;
-
-	if (!selmon->lt[selmon->sellt]->arrange
-	|| (selmon->sel && selmon->sel->isfloating))
-		return;
-	if (c == nexttiled(selmon->clients))
-		if (!c || !(c = nexttiled(c->next)))
-			return;
-	pop(c);
 }
 
 int
