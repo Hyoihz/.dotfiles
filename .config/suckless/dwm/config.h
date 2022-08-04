@@ -16,6 +16,7 @@ static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 /* bar */
 static const int barheight                = 22; /* 2 is the default spacing around the bar's font */
 static const unsigned int colorfultag     = 1;  /* 0 means use SchemeSel for selected tag */
+static const unsigned int showtitle       = 1;  /* 0 means no title */
 /* font */
 static const char *fonts[] = {	
     "JetBrains Mono Medium Nerd Font:pixelsize=15:antialias=true:autohint=true", 
@@ -87,8 +88,8 @@ static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen 
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[💀]",     tile }, /* first entry is default */
-	{ "[👻]",     NULL }, /* no layout function means floating behavior */
+	{ "[🌊]",     tile }, /* first entry is default */
+	{ "[💧]",     NULL }, /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 

@@ -160,6 +160,7 @@ struct Monitor {
 	unsigned int sellt;
 	unsigned int tagset[2];
     unsigned int colorfultag;
+    unsigned int showtitle;
 	int showbar;
 	int topbar;
         int statushandcursor;
@@ -800,6 +801,7 @@ createmon(void)
 	m->showbar = showbar;
 	m->topbar = topbar;
     m->colorfultag = colorfultag ? colorfultag : 0;
+    m->showtitle = showtitle ? showtitle : 0;
 	m->gap = malloc(sizeof(Gap));
 	gap_copy(m->gap, &default_gap);
 	m->lt[0] = &layouts[0];
@@ -947,7 +949,7 @@ drawbar(Monitor *m)
                 w = wbar - x;
 
 	if (w > bh) {
-		if (m->sel) {
+		if (m->sel && m->showtitle) {
             /* fix overflow when window name is bigger than window width */
             int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
             /* make sure name will not overlap on tags even when it is very long */
