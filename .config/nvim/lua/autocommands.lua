@@ -1,22 +1,22 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- PackerCompile on save if in plugins.lua or colorscheme.lua
-autocmd("BufWritePost", {
+autocmd({ "BufWritePost" }, {
 	pattern = { "plugins.lua", "colorscheme.lua" },
 	callback = function()
-		vim.cmd "PackerCompile"
-	end
+		vim.cmd("PackerCompile")
+	end,
 })
 
 -- update catppuccin every time packer is compiled
-autocmd("User", {
+autocmd({ "User" }, {
 	pattern = "PackerCompileDone",
 	callback = function()
-		vim.cmd "CatppuccinCompile"
+		vim.cmd("CatppuccinCompile")
 		vim.defer_fn(function()
-			vim.cmd "colorscheme catppuccin"
+			vim.cmd("colorscheme catppuccin")
 		end, 0) -- Defered for live reloading
-	end
+	end,
 })
 
 -- disable statusline if in alpha greeter, and re-enable before unloading a buffer

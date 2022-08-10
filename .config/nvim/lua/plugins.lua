@@ -17,22 +17,35 @@ packer.init({
 local use = function(plugin)
 	return function(opts)
 		opts = opts or {}
-		if not opts[1] or vim.fn.isdirectory(vim.fn.expand(opts[1])) == 0 then opts[1] = plugin end
-		if type(opts.config) == "string" then opts.config = "require'" .. opts.config .. "'" end
-		if type(opts.setup) == "string" then opts.setup = "lazy'" .. opts.setup .. "'" end
-		if opts.setup then opts.opt = true end
+		if not opts[1] or vim.fn.isdirectory(vim.fn.expand(opts[1])) == 0 then
+			opts[1] = plugin
+		end
+		if type(opts.config) == "string" then
+			opts.config = "require'" .. opts.config .. "'"
+		end
+		if type(opts.setup) == "string" then
+			opts.setup = "lazy'" .. opts.setup .. "'"
+		end
+		if opts.setup then
+			opts.opt = true
+		end
 		packer.use(opts)
 	end
 end
 
 -- core
-use "nvim-lua/plenary.nvim" { module = "plenary" },
-use "catppuccin/nvim" {
+use({ "nvim-lua/plenary.nvim", module = "plenary" })
+use({
+	"catppuccin/nvim",
 	as = "catppuccin",
 	run = ":CatppuccinCompile",
 	config = "config.colorscheme",
-}
-use "kyazdani42/nvim-web-devicons" { module = "nvim-web-devicons", after = "catppuccin" }
+})
+use({
+	"kyazdani42/nvim-web-devicons",
+	module = "nvim-web-devicons",
+	after = "catppuccin",
+})
 use({
 	"nvim-lualine/lualine.nvim",
 	after = "nvim-web-devicons",
@@ -40,6 +53,7 @@ use({
 })
 use({
 	"akinsho/bufferline.nvim",
+	module = "bufferline",
 	after = "nvim-web-devicons",
 	config = "config.bufferline",
 })
@@ -49,43 +63,31 @@ use({
 })
 use({
 	"lukas-reineke/indent-blankline.nvim",
-	opt = true,
-	config = function()
-		require("config.indent-blankline")
-	end,
-	setup = function()
-		lazy("indent-blankline.nvim")
-	end,
+	config = "config.indent-blankline",
+	setup = "indent-blankline.nvim",
 })
 use({
-	opt = true,
+	"norcalli/nvim-colorizer.lua",
 	config = function()
 		require("config.colorizer")
+		vim.api.nvim_command("ColorizerAttachToBuffer")
 	end,
-	setup = function()
-		lazy("nvim-colorizer.lua")
-	end,
+	setup = "nvim-colorizer.lua",
 })
 use({
 	"folke/which-key.nvim",
-	opt = true,
-	config = function()
-		require("config.whichkey")
-	end,
-	setup = function()
-		lazy("which-key.nvim")
-	end,
+	config = "config.whichkey",
+	setup = "which-key.nvim",
 })
 
 -- Git
 use({
 	"lewis6991/gitsigns.nvim",
-	opt = true,
-	config = function()
-		require("config.gitsigns")
-	end,
+	config = "config.gitsigns",
 	setup = function()
-		lazy("gitsigns.nvim")
+		if vim.fn.isdirectory(".git") ~= 0 then
+			lazy("gitsigns.nvim")
+		end
 	end,
 })
 
@@ -94,9 +96,7 @@ use({ "rafamadriz/friendly-snippets", event = "InsertEnter" })
 use({
 	"hrsh7th/nvim-cmp",
 	after = "friendly-snippets",
-	config = function()
-		require("config.cmp")
-	end,
+	config = "config.cmp",
 })
 use({
 	"L3MON4D3/LuaSnip",
@@ -112,42 +112,50 @@ use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
 use({
 	"windwp/nvim-autopairs",
 	after = "nvim-cmp",
-	config = function()
-		require("config.autopairs")
-	end,
+	config = "config.autopairs",
 })
 
 -- LSP
 use({
 	"neovim/nvim-lspconfig",
-	opt = true,
-	config = function()
-		require("config.lsp")
-	end,
-	setup = function()
-		lazy("nvim-lspconfig")
-	end,
+	config = require"config.lsp.lspconfig",
+	setup = "nvim-lspconfig",
 })
-use({ "williamboman/nvim-lsp-installer", cmd = { "LspInstall", "LspInstallInfo", "LspInstallLog" } })
-use("tamago324/nlsp-settings.nvim")
-use("jose-elias-alvarez/null-ls.nvim")
+use({
+	"williamboman/mason.nvim",
+	cmd = {
+		"Mason",
+		"MasonInstall",
+		"MasonInstallAll",
+		"MasonUninstall",
+		"MasonUninstallAll",
+		"MasonLog",
+	},
+})
+use({
+	"williamboman/mason-lspconfig.nvim",
+	cmd = { "LspInstall", "LspUninstall" },
+})
+use({
+	"jose-elias-alvarez/null-ls.nvim",
+	after = "nvim-lspconfig",
+	config = "config.lsp.null-ls",
+})
 
 -- Telescope
 use({
 	"nvim-telescope/telescope.nvim",
+	module = "telescope",
 	cmd = "Telescope",
-	config = function()
-		require("config.telescope")
-	end,
+	config = "config.telescope",
 })
 
 -- Treesitter
 use({
 	"nvim-treesitter/nvim-treesitter",
-	config = function()
-		require("config.treesitter")
-	end,
 	run = ":TSUpdate",
+	config = "config.treesitter",
+	setup = "nvim-treesitter",
 })
 
 use({ "JoosepAlviste/nvim-ts-context-commentstring", requires = "nvim-treesitter" })
@@ -158,24 +166,23 @@ use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter" })
 use({
 	"akinsho/toggleterm.nvim",
 	keys = { [[<c-\>]], "<leader>g" },
-	config = function()
-		require("config.toggleterm")
-	end,
+	cmd = { "ToggleTerm", "TermExec" },
+	config = "config.toggleterm",
 })
 
 -- File tree
 use({
 	"kyazdani42/nvim-tree.lua",
 	cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-	config = function()
-		require("config.nvim-tree")
-	end,
+	config = "config.nvim-tree",
 })
 
 -- Miscs
 use("lewis6991/impatient.nvim")
 use("nvim-lua/popup.nvim")
-use "wbthomason/packer.nvim" {
+use("antoinemadec/FixCursorHold.nvim")
+
+use("wbthomason/packer.nvim")({
 	cmd = {
 		"PackerSnapshot",
 		"PackerSnapshotRollback",
@@ -190,40 +197,27 @@ use "wbthomason/packer.nvim" {
 		"PackerLoad",
 	},
 	config = "plugins",
-}
+})
 use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
-use("antoinemadec/FixCursorHold.nvim")
 use({
 	"ahmedkhalf/project.nvim",
 	after = "telescope.nvim",
-	config = function()
-		require("config.project")
-	end,
+	config = "config.project",
 })
 use({
 	"numToStr/Comment.nvim",
 	module = "Comment",
 	keys = { "gc", "gb" },
-	config = function()
-		require("config.comment")
-	end,
+	config = "config.comment",
 })
 use({
 	"goolord/alpha-nvim",
 	requires = { "kyazdani42/nvim-web-devicons" },
-	config = function()
-		require("config.alpha")
-	end,
+	config = "config.alpha",
 })
 
 use({
 	"Pocco81/AutoSave.nvim",
-	opt = true,
-	config = function()
-		require("config.autosave")
-	end,
-	setup = function()
-		lazy("AutoSave.nvim")
-	end,
+	config = "config.autosave",
+	setup = "AutoSave.nvim",
 })
-
