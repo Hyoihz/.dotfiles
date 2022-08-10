@@ -1,8 +1,8 @@
 #!/bin/sh
 
-VOL="$(pamixer --get-volume)"
+VOL="$(pulsemixer --get-volume | awk '{print $1}')"
 
-if [ "$(pamixer --get-mute)" = true ]; then
+if [ "$(pulsemixer --get-mute)" = 1 ]; then
     printf "\x0d󰝟 Muted\x0b " 
 elif [ "$VOL" -ge "70" ]; then
     printf "\x0d󰕾 %s%%\x0b " "$VOL"

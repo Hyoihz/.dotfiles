@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$(cat /sys/class/net/wlp3s0/operstate)" = "up" ]; then
+    [[ -z "$(iwgetid -r)" ]] && printf "\x0e󱛄 Connecting\x0b " || printf "\x0e󰖩 %s\x0b " "$(iwgetid -r)" 
+else 
+    printf "\x0e󰖪 Disconnected\x0b "
+fi
+

@@ -1,9 +1,10 @@
 #!/bin/sh
 
 case "$1" in
-    1) pamixer -t ;;
-    4) pamixer -ui 1 ;;
-    5) pamixer -ud 1 ;;
+    1) pulsemixer --toggle-mute ;;
+    3) pulsemixer --unmute --set-volume 100 ;;
+    4) pulsemixer --unmute --max-volume 100 --change-volume +1 ;;
+    5) pulsemixer --unmute --change-volume -1 ;;
 esac
 
 kill -36 "$(pidof dwmblocks)"

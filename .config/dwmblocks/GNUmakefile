@@ -6,7 +6,7 @@ CFLAGS = -O3 -Wall -Wextra
 X11CFLAGS = $(shell pkg-config --cflags x11)
 X11LIBS = $(shell pkg-config --libs x11)
 
-all: dwmblocks sigdwmblocks/sigdwmblocks
+all: dwmblocks
 
 config.h:
 	cp config.def.h $@
@@ -25,24 +25,21 @@ E4BLOCKS = $(subst ",\\",${E3BLOCKS})
 # escaping `'' for shell
 EFBLOCKS = $(subst ','\'',${E4BLOCKS})
 
-sigdwmblocks/sigdwmblocks: sigdwmblocks/sigdwmblocks.c
-	${CC} -o $@ ${CFLAGS} $<
-
 clean:
-	rm -f dwmblocks sigdwmblocks/sigdwmblocks
+	rm -f dwmblocks
 
 BINDIR = ${DESTDIR}${PREFIX}/bin
 PIDDIR = /var/local/dwmblocks
 
 install: all
 	mkdir -p ${BINDIR}
-	cp -f dwmblocks sigdwmblocks/sigdwmblocks ${BINDIR}
-	chmod 755 ${BINDIR}/dwmblocks ${BINDIR}/sigdwmblocks
+	cp -f dwmblocks ${BINDIR}
+	chmod 755 ${BINDIR}/dwmblocks
 	mkdir -p ${PIDDIR}
 	chmod 777 ${PIDDIR}
 
 uninstall:
-	rm -f ${BINDIR}/dwmblocks ${BINDIR}/sigdwmblocks
+	rm -f ${BINDIR}/dwmblocks
 	rm -df ${PIDDIR} || exit 0
 
 .PHONY: all clean install uninstall
