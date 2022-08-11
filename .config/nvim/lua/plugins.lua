@@ -34,155 +34,135 @@ local use = function(plugin)
 end
 
 -- core
-use({ "nvim-lua/plenary.nvim", module = "plenary" })
-use({
-	"catppuccin/nvim",
+use "nvim-lua/plenary.nvim" { module = "plenary" }
+use "catppuccin/nvim" {
 	as = "catppuccin",
 	run = ":CatppuccinCompile",
 	config = "config.colorscheme",
-})
-use({
-	"kyazdani42/nvim-web-devicons",
-	module = "nvim-web-devicons",
-	after = "catppuccin",
-})
-use({
-	"nvim-lualine/lualine.nvim",
+}
+use "kyazdani42/nvim-web-devicons" {
+    module = "nvim-web-devicons",
+    after = "catppuccin",
+}
+use "nvim-lualine/lualine.nvim" {
 	after = "nvim-web-devicons",
 	config = "config.lualine",
-})
-use({
-	"akinsho/bufferline.nvim",
-	module = "bufferline",
+}
+use "akinsho/bufferline.nvim" {
 	after = "nvim-web-devicons",
 	config = "config.bufferline",
-})
-use({
-	"famiu/bufdelete.nvim",
+}
+use "famiu/bufdelete.nvim" {
 	setup = "bufdelete.nvim",
-})
-use({
-	"lukas-reineke/indent-blankline.nvim",
+}
+use "lukas-reineke/indent-blankline.nvim" {
 	config = "config.indent-blankline",
 	setup = "indent-blankline.nvim",
-})
-use({
-	"norcalli/nvim-colorizer.lua",
+}
+use "norcalli/nvim-colorizer.lua" {
 	config = function()
 		require("config.colorizer")
 		vim.api.nvim_command("ColorizerAttachToBuffer")
 	end,
 	setup = "nvim-colorizer.lua",
-})
-use({
-	"folke/which-key.nvim",
+}
+use "folke/which-key.nvim" {
 	config = "config.whichkey",
 	setup = "which-key.nvim",
-})
+}
 
 -- Git
-use({
-	"lewis6991/gitsigns.nvim",
+use "lewis6991/gitsigns.nvim" {
 	config = "config.gitsigns",
-	setup = function()
-		if vim.fn.isdirectory(".git") ~= 0 then
-			lazy("gitsigns.nvim")
-		end
-	end,
-})
+	setup = "gitsigns.nvim",
+}
 
 -- Autocomplete + Snippet
-use({ "rafamadriz/friendly-snippets", event = "InsertEnter" })
-use({
-	"hrsh7th/nvim-cmp",
+use "rafamadriz/friendly-snippets" { event = "InsertEnter" }
+use "hrsh7th/nvim-cmp" {
 	after = "friendly-snippets",
 	config = "config.cmp",
-})
-use({
-	"L3MON4D3/LuaSnip",
+}
+use "L3MON4D3/LuaSnip" {
 	requires = "friendly-snippets",
 	after = "nvim-cmp",
-})
-use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
-use({ "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" })
+}
+use "saadparwaiz1/cmp_luasnip" { after = "LuaSnip" }
+use "hrsh7th/cmp-nvim-lsp" { after = "cmp_luasnip" }
 
-use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
-use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
-use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
-use({
-	"windwp/nvim-autopairs",
+use "hrsh7th/cmp-buffer" { after = "cmp-nvim-lsp" }
+use "hrsh7th/cmp-path" { after = "cmp-buffer" }
+use "hrsh7th/cmp-cmdline" { after = "cmp-path" }
+use "windwp/nvim-autopairs" {
 	after = "nvim-cmp",
 	config = "config.autopairs",
-})
+}
 
 -- LSP
-use({
-	"neovim/nvim-lspconfig",
-	config = require"config.lsp.lspconfig",
+use "neovim/nvim-lspconfig" {
+	config = "config.lsp.lspconfig",
 	setup = "nvim-lspconfig",
-})
-use({
-	"williamboman/mason.nvim",
-	cmd = {
-		"Mason",
-		"MasonInstall",
-		"MasonInstallAll",
-		"MasonUninstall",
-		"MasonUninstallAll",
-		"MasonLog",
-	},
-})
-use({
-	"williamboman/mason-lspconfig.nvim",
-	cmd = { "LspInstall", "LspUninstall" },
-})
-use({
-	"jose-elias-alvarez/null-ls.nvim",
+}
+
+use "williamboman/mason.nvim" {
+    module = "mason",
+    cmd = {
+        "Mason",
+        "MasonInstall",
+        "MasonInstallAll",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonLog",
+    },
+}
+
+use "williamboman/mason-lspconfig.nvim" {
+    module = "mason-lspconfig",
+    cmd = { "LspInstall", "LspUninstall" },
+}
+
+use "jose-elias-alvarez/null-ls.nvim" {
 	after = "nvim-lspconfig",
 	config = "config.lsp.null-ls",
-})
+}
 
 -- Telescope
-use({
-	"nvim-telescope/telescope.nvim",
+use "nvim-telescope/telescope.nvim" {
 	module = "telescope",
 	cmd = "Telescope",
 	config = "config.telescope",
-})
+}
 
 -- Treesitter
-use({
-	"nvim-treesitter/nvim-treesitter",
+use "nvim-treesitter/nvim-treesitter" {
 	run = ":TSUpdate",
 	config = "config.treesitter",
 	setup = "nvim-treesitter",
-})
+}
 
-use({ "JoosepAlviste/nvim-ts-context-commentstring", requires = "nvim-treesitter" })
-use({ "p00f/nvim-ts-rainbow", requires = "nvim-treesitter" })
-use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter" })
+use "JoosepAlviste/nvim-ts-context-commentstring" { after = "nvim-treesitter", requires = "nvim-treesitter" }
+use "p00f/nvim-ts-rainbow" { after = "nvim-treesitter", requires = "nvim-treesitter" }
+use "windwp/nvim-ts-autotag" { after = "nvim-treesitter", requires = "nvim-treesitter" }
 
 -- Terminal
-use({
-	"akinsho/toggleterm.nvim",
+use "akinsho/toggleterm.nvim" {
 	keys = { [[<c-\>]], "<leader>g" },
 	cmd = { "ToggleTerm", "TermExec" },
 	config = "config.toggleterm",
-})
+}
 
 -- File tree
-use({
-	"kyazdani42/nvim-tree.lua",
+use "kyazdani42/nvim-tree.lua" {
 	cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 	config = "config.nvim-tree",
-})
+}
 
 -- Miscs
-use("lewis6991/impatient.nvim")
-use("nvim-lua/popup.nvim")
-use("antoinemadec/FixCursorHold.nvim")
+use "lewis6991/impatient.nvim" { module = "impatient" }
+use "nvim-lua/popup.nvim" { module = "popup" }
+use "antoinemadec/FixCursorHold.nvim" { module = "FixCursorHold" }
 
-use("wbthomason/packer.nvim")({
+use "wbthomason/packer.nvim" {
 	cmd = {
 		"PackerSnapshot",
 		"PackerSnapshotRollback",
@@ -197,27 +177,22 @@ use("wbthomason/packer.nvim")({
 		"PackerLoad",
 	},
 	config = "plugins",
-})
-use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
-use({
-	"ahmedkhalf/project.nvim",
+}
+use "dstein64/vim-startuptime" { cmd = "StartupTime" }
+use "ahmedkhalf/project.nvim" {
 	after = "telescope.nvim",
 	config = "config.project",
-})
-use({
-	"numToStr/Comment.nvim",
+}
+use "numToStr/Comment.nvim" {
 	module = "Comment",
 	keys = { "gc", "gb" },
 	config = "config.comment",
-})
-use({
-	"goolord/alpha-nvim",
+}
+use "goolord/alpha-nvim" {
 	requires = { "kyazdani42/nvim-web-devicons" },
 	config = "config.alpha",
-})
-
-use({
-	"Pocco81/AutoSave.nvim",
-	config = "config.autosave",
-	setup = "AutoSave.nvim",
-})
+}
+use "Pocco81/auto-save.nvim" {
+	config = "config.auto-save",
+	setup = "auto-save.nvim",
+}

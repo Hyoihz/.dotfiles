@@ -16,9 +16,12 @@ catppuccin.setup({
 		conditionals = { "italic" },
 	},
 	integrations = {
+
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
+
+
 			virtual_text = {
 				errors = { "italic" },
 				hints = { "italic" },
@@ -38,7 +41,7 @@ catppuccin.setup({
 		nvimtree = {
 			enabled = true,
 			show_root = true,
-			transparent_panel = false,
+			transparent_panel = true,
 		},
 		which_key = true,
 		indent_blankline = {
@@ -50,6 +53,7 @@ catppuccin.setup({
 		ts_rainbow = true,
 	},
 })
+
 
 vim.api.nvim_command("colorscheme catppuccin")
 
