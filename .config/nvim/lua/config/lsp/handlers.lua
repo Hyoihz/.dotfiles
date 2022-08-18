@@ -21,7 +21,7 @@ M.on_attach = function(client, bufnr)
 	map("n", "gt", require("telescope.builtin").lsp_type_definitions, { desc = "lsp type definitions" }, opts)
 	map("n", "<leader>lr", require("telescope.builtin").lsp_references, { desc = "lsp references" }, opts)
 
-	-- code action
+    -- code action
 	map("n", "<leader>la", function()
 		require("lspsaga.codeaction"):code_action()
 	end, { desc = "lsp code action" }, opts)
@@ -55,15 +55,15 @@ M.on_attach = function(client, bufnr)
     map("n", "gf", vim.lsp.buf.formatting_sync, { desc = "lsp formatting" }, opts)
 	map("v", "gf", vim.lsp.buf.range_formatting, { desc = "lsp formatting (range)" }, opts)
 
-	-- hover
+    -- hover
 	map("n", "K", require("lspsaga.hover").render_hover_doc, { desc = "lsp hover" }, opts)
 
-	-- previewer
+    -- previewer
 	map("n", "<leader>lp", function()
 		require("lspsaga.definition"):preview_definition()
 	end, { desc = "lsp preview definition" }, opts)
 
-	-- rename
+    -- rename
 	map("n", "gr", function()
 		require("lspsaga.rename"):lsp_rename()
 	end, { desc = "lsp rename" }, opts)
@@ -71,7 +71,7 @@ M.on_attach = function(client, bufnr)
     -- signature help
 	map("n", "<leader>lh", require("lspsaga.signaturehelp").signature_help, { desc = "lsp signature help" }, opts)
 
-	-- scrolling
+    -- scrolling
 	map("n", "<C-u>", function()
 		require("lspsaga.action").smart_scroll_with_saga(-1)
 	end, { desc = "lsp scroll (up)" }, opts)
