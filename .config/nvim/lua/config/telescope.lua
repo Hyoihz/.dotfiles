@@ -4,13 +4,17 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
-		selection_caret = " ",
+		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules/" },
+		sorting_strategy = "ascending",
+		layout_config = {
+			horizontal = { prompt_position = "top" },
+			vertical = { mirror = false },
+		},
 
 		mappings = {
 			i = {
@@ -71,11 +75,9 @@ telescope.setup({
 
 				["<PageUp>"] = actions.results_scrolling_up,
 				["<PageDown>"] = actions.results_scrolling_down,
-
-				["?"] = actions.which_key,
 			},
 		},
 	},
-	pickers = {},
-	extensions = {},
 })
+
+telescope.load_extension("fzf")

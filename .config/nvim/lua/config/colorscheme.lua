@@ -5,65 +5,60 @@ end
 
 vim.g.catppuccin_flavour = "mocha"
 
+local colors = require("catppuccin.palettes").get_palette()
+colors.none = "NONE"
+
 catppuccin.setup({
 	transparent_background = true,
 	term_colors = true,
 	compile = {
 		enabled = true,
 	},
-	styles = {
-		comments = { "italic" },
-		conditionals = { "italic" },
-	},
 	integrations = {
-
-		treesitter = true,
-		native_lsp = {
-			enabled = true,
-
-
-			virtual_text = {
-				errors = { "italic" },
-				hints = { "italic" },
-				warnings = { "italic" },
-				information = { "italic" },
-			},
-			underlines = {
-				errors = { "underline" },
-				hints = { "underline" },
-				warnings = { "underline" },
-				information = { "underline" },
-			},
-		},
-		cmp = true,
-		gitsigns = true,
-		telescope = true,
 		nvimtree = {
-			enabled = true,
-			show_root = true,
 			transparent_panel = true,
 		},
-		which_key = true,
-		indent_blankline = {
-			enabled = true,
-			colored_indent_levels = true,
-		},
-		dashboard = true,
-		bufferline = true,
+		lsp_saga = true,
+		dashboard = false,
+		markdown = false,
 		ts_rainbow = true,
+		notify = false,
+		vimwiki = false,
+		beacon = false,
+	},
+	custom_highlights = {
+		-- General
+		Normal = { bg = colors.none },
+		NormalFloat = { bg = colors.none },
+		LineNr = { fg = colors.overlay1 },
+		CursorLine = { bg = colors.surface1 },
+		CursorLineNr = { fg = colors.lavender },
+		Comment = { fg = colors.overlay1 },
+		-- Bufferline
+		BufferLineFill = { bg = colors.surface0 },
+		BufferLineModified = { fg = colors.rosewater },
+		BufferLineModifiedSelected = { fg = colors.yellow },
+		-- NvinTree
+		NvimTreeGitNew = { fg = colors.mauve },
+		-- Telescope
+		TelescopeSelection = { fg = colors.pink, bg = colors.surface1 },
+		-- Completion
+		PmenuSel = { fg = colors.pink },
+		CmpItemAbbrMatch = { fg = colors.blue },
+		CmpItemAbbrMatchFuzzy = { fg = colors.yellow },
+		-- LSP diagnostics
+		DiagnosticVirtualTextError = { bg = colors.none },
+		DiagnosticVirtualTextWarn = { bg = colors.none },
+		DiagnosticVirtualTextInfo = { bg = colors.none },
+		DiagnosticVirtualTextHint = { bg = colors.none },
+		--Lspsaga
+		FinderParam = { fg = colors.mauve, bg = colors.none, bold = true },
+		FinderVirtText = { fg = colors.blue },
+		DefinitionsIcon = { fg = colors.blue },
+		ImplementsIcon = { fg = colors.blue },
+		TargetFileName = { fg = colors.text },
+		LspSagaFinderSelection = { fg = colors.pink, bg = colors.surface1, bold = true },
 	},
 })
 
-
 vim.api.nvim_command("colorscheme catppuccin")
-
---vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#c0caf5" })
---vim.api.nvim_set_hl(0, "TelescopeNormal", { fg = "#c0caf5" })
---
---vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3d59a1" })
---vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#3d59a1" })
---
---vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#db4b4b" })
---vim.api.nvim_set_hl(0, "DiagnosticVirtualTexWarn", { fg = "#e0af68" })
---vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#0db9d7" })
---vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#1abc9c" })

@@ -92,7 +92,6 @@ cmp.setup({
 	},
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
-		-- format = function(entry, vim_item)
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = string.format("   %s %s", kind_icons[vim_item.kind], vim_item.kind)
@@ -118,11 +117,11 @@ cmp.setup({
 	window = {
 		documentation = {
 			border = "rounded",
-			winhighlight = "Normal:CmpPmenu,Normal:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			winhighlight = "Normal:Normal,Search:None",
 		},
 		completion = {
 			border = "rounded",
-			winhighlight = "Normal:CmpPmenu,Normal:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			winhighlight = "Normal:Normal,CursorLine:PmenuSel,Search:None",
 		},
 	},
 	experimental = {

@@ -19,16 +19,6 @@ autocmd({ "User" }, {
 	end,
 })
 
--- disable statusline if in alpha greeter, and re-enable before unloading a buffer
-autocmd({ "User" }, {
-	pattern = { "AlphaReady" },
-	callback = function()
-		vim.cmd([[
-            set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2
-        ]])
-	end,
-})
-
 -- press "q" to close
 autocmd({ "FileType" }, {
 	pattern = { "qf", "help", "startuptime", "lspinfo", "null-ls-info" },

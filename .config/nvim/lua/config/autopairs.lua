@@ -1,4 +1,3 @@
--- Setup nvim-cmp.
 local status_ok, autopairs = pcall(require, "nvim-autopairs")
 if not status_ok then
 	return
@@ -26,6 +25,7 @@ autopairs.setup({
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
 	return

@@ -60,7 +60,7 @@ o.splitright = true
 o.termguicolors = true
 
 -- performance
-o.timeoutlen = 100
+o.timeoutlen = 300
 o.ttimeoutlen = 10
 o.updatetime = 100
 

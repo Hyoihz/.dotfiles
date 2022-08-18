@@ -6,16 +6,19 @@ end
 nvim_tree.setup({
 	disable_netrw = true,
 	view = {
+		width = 32,
 		mappings = {
 			list = {
 				{ key = "l", action = "edit" },
 				{ key = "h", action = "close_node" },
 				{ key = "<C-s>", action = "split" },
+				{ key = "<esc>", action = "clear_live_filter" },
 			},
 		},
 	},
 	renderer = {
-		root_folder_modifier = ":t",
+		highlight_git = true,
+		root_folder_modifier = ":p:~",
 		icons = {
 			glyphs = {
 				git = {
@@ -30,21 +33,15 @@ nvim_tree.setup({
 		enable = true,
 		update_root = true,
 	},
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
-	},
 	diagnostics = {
 		enable = true,
+		icons = {
+			hint = "",
+			warning = "",
+		},
 	},
 	filters = {
 		custom = { ".git" },
 		exclude = { ".gitignore" },
-	},
-	filesystem_watchers = {
-		enable = true,
-		interval = 100,
-		debounce_delay = 50,
 	},
 })

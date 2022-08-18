@@ -7,17 +7,9 @@ bufferline.setup({
 	options = {
 		close_command = "Bdelete! %d",
 		right_mouse_command = "Bdelete! %d",
+        modified_icon = '',
 		tab_size = 20,
 		show_close_icon = false,
 		offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-	},
-	highlights = {
-
-		modified_selected = {
-			guifg = { attribute = "fg", highlight = "Normal" },
-		},
-		separator = {
-			guifg = { attribute = "fg", highlight = "TabLine" },
-		},
 	},
 })
