@@ -40,8 +40,4 @@ nvim_tree.setup({
 			warning = "",
 		},
 	},
-	filters = {
-		custom = { ".git" },
-		exclude = { ".gitignore" },
-	},
 })
