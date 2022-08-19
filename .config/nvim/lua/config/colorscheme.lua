@@ -23,6 +23,8 @@ catppuccin.setup({
 		markdown = false,
 		ts_rainbow = true,
 		notify = false,
+        telekasten = false,
+		symbols_outline = false,
 		vimwiki = false,
 		beacon = false,
 	},
