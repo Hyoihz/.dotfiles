@@ -39,7 +39,6 @@ map("x", "J", ":move '>+1<CR>gv-gv", { desc = "move highlighted line below" })
 map("x", "K", ":move '<-2<CR>gv-gv", { desc = "move highlighted line above" })
 
 -- TERMINAL --
-map("n", [[<C-\>]], "<cmd>ToggleTerm<cr>", { desc = "open terminal" })
 map("t", "<esc>", [[<C-\><C-n>]], { desc = "terminal normal mode" })
 
 -- lazygit
