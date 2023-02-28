@@ -46,7 +46,15 @@ luac.out
 .config/nvim/plugin/packer_compiled.lua
 
 # succ
+**/config.h
 *.orig
 *.rej
 *.json
 *.cache
+
+.config/dwmblocks/dwmblocks
+.config/suckless/dmenu/dmenu
+.config/suckless/dmenu/stest
+.config/suckless/dwm/dwm
+.config/suckless/slock/slock
+.config/suckless/st/st
