@@ -3,7 +3,7 @@
 # Get the list of active network connections
 if nmcli -t -f TYPE,STATE c show --active | grep -q ":activated" | head -n 1; then
     # Ping test to check internet connectivity
-    if ping -q -c 1 -W 1 google.com > /dev/null; then
+    if ping -q -c 5 -W 5 google.com > /dev/null; then
         # Get the name and type of the active connection
         CON_NAME=$(nmcli -t -f NAME c show --active | head -n 1)
         CON_TYPE=$(nmcli -t -f TYPE c show --active | head -n 1)
