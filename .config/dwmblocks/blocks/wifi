@@ -10,14 +10,14 @@ if nmcli -t -f TYPE,STATE c show --active | grep -q ":activated" | head -n 1; th
 
         # Check if the connection is wireless
         if [[ "$CON_TYPE" =~ (wifi|wireless) ]]; then
-            printf "\x0e󰖩 %s\x0b\n" "$CON_NAME"
+            printf "\x0e󰖩 %s \x0b\n" "$CON_NAME"
         else
-            printf "\x0e󰖟 Connected\x0b\n"
+            printf "\x0e󰖟 Connected \x0b\n"
         fi
     else
-        printf "\x0e󰖪 Disconnected\x0b\n"
+        printf "\x0e󰖪 Disconnected \x0b\n"
     fi
 else
     # No active network connection 
-    printf "\x0e󰖪 Disconnected\x0b\n"
+    printf "\x0e󰖪 Disconnected \x0b\n"
 fi
