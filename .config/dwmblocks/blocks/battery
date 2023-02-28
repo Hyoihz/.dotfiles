@@ -1,4 +1,16 @@
 #!/bin/sh
-ICON=""
-read -r capacity </sys/class/power_supply/BAT0/capacity
+
+# Find the battery directory in /sys/class/power_supply/
+BATTERY=$(find /sys/class/power_supply/ -name "BAT*" -type d -printf '%f\n' | head -n 1)
+
+# Find AC adapter directories in /sys/class/power_supply/
+# ADAPTERS=$(find /sys/class/power_supply/ -name "AC*" -type d -printf '%f\n | head -n 1')
+
+# If no battery is found, exit the script
+if [ -z "$BATTERY" ]; then
+    exit 1
+fi
+
+ICON="󰁹"
+read -r capacity </sys/class/power_supply/"$BATTERY"/capacity
 printf "$ICON%s%%" "$capacity"
