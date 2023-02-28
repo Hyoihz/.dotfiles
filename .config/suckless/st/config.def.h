@@ -155,14 +155,21 @@ unsigned int defaultbg = 257;
 unsigned int defaultcs = 258;
 static unsigned int defaultrcs = 258;
 
-/*
- * Default shape of cursor
- * 2: Block ("█")
- * 4: Underline ("_")
- * 6: Bar ("|")
- * 7: Snowman ("☃")
+ /*
+  * Default style of cursor
+  * 0: blinking block
+  * 1: blinking block (default)
+  * 2: steady block ("█")
+  * 3: blinking underline
+  * 4: steady underline ("_")
+  * 5: blinking bar
+  * 6: steady bar ("|")
+  * 7: blinking st cursor
+  * 8: steady st cursor
  */
-static unsigned int cursorshape = 6;
+
+static unsigned int cursorstyle = 5;
+static Rune stcursor = 0x2603; /* snowman ("☃") */
 
 /*
  * Default columns and rows numbers
