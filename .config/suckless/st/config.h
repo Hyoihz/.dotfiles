@@ -4,7 +4,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrains Mono Nerd Font:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
     "DejaVu Sans Mono for Powerline:pixelsize=16:antialias=true:autohint=true",
