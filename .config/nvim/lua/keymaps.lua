@@ -53,7 +53,7 @@ end, { desc = "open htop" })
 
 -- ncdu
 map("n", "<leader>ts", function()
-	require("toggleterm.terminal").Terminal:new({ cmd = "ncdu --color dark", hidden = true }):toggle()
+	require("toggleterm.terminal").Terminal:new({ cmd = "ncdu", hidden = true }):toggle()
 end, { desc = "open ncdu" })
 
 -- node 
