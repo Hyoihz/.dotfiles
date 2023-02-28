@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
 /* appearance */
 static const unsigned int borderpx        = 3;  /* border pixel of windows */
 static const Gap default_gap              = {.isgap = 1, .realgap = 10, .gappx = 10};
