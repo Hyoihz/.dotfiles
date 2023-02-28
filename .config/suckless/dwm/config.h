@@ -12,18 +12,20 @@ static const int showsystray              = 1;  /* 0 means no systray */
 static const int systraypinningfailfirst  = 1;  /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const unsigned int systraypinning  = 0;  /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing  = 4;  /* systray spacing */
-static const unsigned int systrayiconsize = 16; /* systray icon size in px */
+static const unsigned int systrayiconsize = 19; /* systray icon size in px */
 /* bar */
 static const int barheight                = 22; /* 2 is the default spacing around the bar's font */
 static const unsigned int colorfultag     = 1;  /* 0 means use SchemeSel for selected tag */
 static const unsigned int showtitle       = 1;  /* 0 means no title */
+static const unsigned int baralpha = 0xd0;
+static const unsigned int borderalpha = OPAQUE;
 /* font */
 static const char *fonts[] = {	
-    "JetBrains Mono Medium Nerd Font:pixelsize=15:antialias=true:autohint=true", 
+    "JetBrains Mono Nerd Font:style=medium:pixelsize=15:antialias=true:autohint=true", 
     "Material Design Icons Desktop:pixelsize=20:antialias=true:autohint=true",
     "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 };
-static const char dmenufont[]    = "JetBrains Mono Medium Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static const char dmenufont[]    = "JetBrains Mono Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true";
 /* color */
 static const char col_bg[]       = "#1E1E2E";
 static const char col_fg[]       = "#CDD6F4";
@@ -58,6 +60,26 @@ static const char *colors[][3]      = {
 	[SchemeCol4]   = { col_magenta,  col_bg, col_black }, /* \x0f */
 };
 
+static const unsigned int alphas[][3]      = {
+       /*               fg      bg        border     */
+       [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+       [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag]    = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag1]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag2]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag3]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag4]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag5]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag6]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag7]   = { OPAQUE, baralpha, borderalpha },
+	[SchemeLayout] = { OPAQUE, baralpha, borderalpha },
+	[SchemeTitle]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeCol1]   = { OPAQUE, baralpha, borderalpha }, /* \x0c */
+	[SchemeCol2]   = { OPAQUE, baralpha, borderalpha }, /* \x0d */
+	[SchemeCol3]   = { OPAQUE, baralpha, borderalpha }, /* \x0e */
+	[SchemeCol4]   = { OPAQUE, baralpha, borderalpha }, /* \x0f */
+};
+
 /* tagging */
 static const char *tags[] = { " 󰒓 ", " 󰈹 ", " 󰓇 ", " 󰠾 ", " 󰇮 ", " 󰝰 ", " 󱎶 " };
 
@@ -88,8 +110,8 @@ static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen 
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[🌊]",     tile }, /* first entry is default */
-	{ "[💧]",     NULL }, /* no layout function means floating behavior */
+  	{ "[🌊]",     tile }, /* first entry is default */
+  	{ "[💧]",     NULL }, /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -182,11 +204,11 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-        { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+    { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },
-        { ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
+    { ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
 	{ ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
@@ -196,4 +218,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
