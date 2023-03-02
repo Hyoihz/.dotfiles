@@ -53,11 +53,11 @@ luac.out
 *.cache
 
 .config/dwmblocks/dwmblocks
-.config/suckless/dmenu/dmenu
-.config/suckless/dmenu/stest
-.config/suckless/dwm/dwm
-.config/suckless/slock/slock
-.config/suckless/st/st
+suckless/dmenu/dmenu
+suckless/dmenu/stest
+suckless/dwm/dwm
+suckless/slock/slock
+suckless/st/st
 
 # zsh
 .config/zsh/.zcompdump
