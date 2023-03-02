@@ -1,0 +1,8 @@
+# Delete before "/"
+function backward-kill-dir() {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+    zle -f kill
+}
+
+zle -N backward-kill-dir

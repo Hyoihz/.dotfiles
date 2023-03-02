@@ -1,0 +1,28 @@
+# Pacman
+alias pacu="sudo pacman -Syu"
+alias pacuu="sudo pacman -Syyu"
+alias paci="sudo pacman -S"
+alias pacs="sudo pacman -Ss"
+alias pacr="sudo pacman -Rns"
+
+# Exa aliases to replace ls
+alias ls="exa --all --color=always"
+alias ll="ls --long"
+alias lls="ll --sort=size --reverse"
+alias llsr="ll --sort=size"
+alias llc="ll --sort=created --reverse --time=created --header"
+alias llcr="ll --sort=created --time=created --header"
+alias llm="ll --sort=modified --reverse --time=modified --header"
+alias llmr="ll --sort=modified --time=modified --header"
+alias lt="exa -Ta"
+
+# Colorize grep
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+
+# Confirmation before operation
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+

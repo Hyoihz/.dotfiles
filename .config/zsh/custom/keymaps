@@ -1,0 +1,11 @@
+KEYTIMEOUT=1
+
+bindkey "^A" vi-beginning-of-line # ctrl + a
+bindkey "^E" vi-end-of-line # ctrl + e
+
+bindkey '^u' backward-kill-line # ctrl + u
+bindkey '^w' backward-kill-word # ctrl + w
+bindkey '^H' backward-kill-dir # ctrl + backspace
+bindkey '^?' backward-delete-char # backspace
+
+bindkey -s '^D' 'cd -^I' # ctrl + d - opens dir history stack
