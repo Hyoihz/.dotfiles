@@ -7,6 +7,7 @@
 static char *font = "JetBrains Mono Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
+    "Meslo LG S Nerd Font:pixelsize=16:antialias=true:autohint=true",
     "Symbols Nerd Font Mono:pixelsize=10:antialias=true:autohint=true",
     "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 };
