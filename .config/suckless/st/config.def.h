@@ -4,11 +4,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrains Mono Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrains Mono Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-    "DejaVu Sans Mono for Powerline:pixelsize=16:antialias=true:autohint=true",
-    "Material Design Icons Desktop:pixelsize=16:antialias=true:autohint=true",
+    "Symbols Nerd Font Mono:pixelsize=10:antialias=true:autohint=true",
+    "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 };
 
 static int borderpx = 15;
