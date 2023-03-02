@@ -58,3 +58,6 @@ luac.out
 .config/suckless/dwm/dwm
 .config/suckless/slock/slock
 .config/suckless/st/st
+
+# zsh
+.config/zsh/.zcompdump
