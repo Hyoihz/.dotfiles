@@ -20,8 +20,8 @@ static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 /* font */
 static const char *fonts[] = {	
-    "JetBrains Mono Nerd Font:style=medium:pixelsize=15:antialias=true:autohint=true", 
-    "Material Design Icons Desktop:pixelsize=20:antialias=true:autohint=true",
+    "Symbols Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
+    "JetBrains Mono Nerd Font:style=medium:pixelsize=14:antialias=true:autohint=true", 
     "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 };
 static const char dmenufont[]    = "JetBrains Mono Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true";
