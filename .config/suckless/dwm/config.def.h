@@ -24,7 +24,7 @@ static const char *fonts[] = {
     "JetBrains Mono Nerd Font:style=medium:pixelsize=14:antialias=true:autohint=true", 
     "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 };
-static const char dmenufont[]    = "JetBrains Mono Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true";
+static const char dmenufont[]    = "JetBrains Mono Nerd Font:style=medium:pixelsize=15:antialias=true:autohint=true";
 /* color */
 static const char col_bg[]       = "#1E1E2E";
 static const char col_fg[]       = "#CDD6F4";
