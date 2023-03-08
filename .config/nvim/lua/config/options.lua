@@ -6,10 +6,6 @@ local indent = 4
 g.mapleader = " "
 g.maplocalleader = " "
 
--- use filetype.lua instead of filetype.vim
-g.did_load_filetypes = 0
-g.do_filetype_lua = 1
-
 -- autocomplete
 o.completeopt = { "menu", "menuone", "noselect" }
 o.pumheight = 10
@@ -34,7 +30,6 @@ o.smartcase = true
 
 -- ui
 o.conceallevel = 0
-o.cmdheight = 1
 o.cursorline = true
 o.fillchars = {
 	-- horiz = "━",
@@ -71,6 +66,8 @@ o.fileencoding = "utf-8"
 o.mouse = "a"
 o.shortmess:append("csI")
 o.undofile = true
+o.undolevels = 5000
+o.wrap = false
 o.whichwrap:append("<>[]hl")
 
 -- disable builtin vim plugins

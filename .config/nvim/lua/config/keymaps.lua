@@ -38,35 +38,6 @@ map("v", ">", ">gv", { desc = "indent line" })
 map("x", "J", ":move '>+1<CR>gv-gv", { desc = "move highlighted line below" })
 map("x", "K", ":move '<-2<CR>gv-gv", { desc = "move highlighted line above" })
 
--- TERMINAL --
-map("t", "<esc>", [[<C-\><C-n>]], { desc = "terminal normal mode" })
-
--- lazygit
-map("n", "<leader>gg", function()
-	require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true }):toggle()
-end, { desc = "open lazygit" })
-
--- htop 
-map("n", "<leader>th", function()
-	require("toggleterm.terminal").Terminal:new({ cmd = "htop", hidden = true }):toggle()
-end, { desc = "open htop" })
-
--- ncdu
-map("n", "<leader>ts", function()
-	require("toggleterm.terminal").Terminal:new({ cmd = "ncdu", hidden = true }):toggle()
-end, { desc = "open ncdu" })
-
--- node 
-map("n", "<leader>tn", function()
-	require("toggleterm.terminal").Terminal:new({ cmd = "node", hidden = true }):toggle()
-end, { desc = "open node" })
-
--- python 
-map("n", "<leader>tp", function()
-	require("toggleterm.terminal").Terminal:new({ cmd = "python3", hidden = true }):toggle()
-end, { desc = "open python" })
-
-
 -- OTHERS --
 -- Standard operations
 map("n", "<leader>h", "<cmd>noh<cr>", { desc = "remove highlight" })
@@ -75,44 +46,48 @@ map("n", "<leader>s", "<cmd>split<cr>", { desc = "horizontal split" })
 map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "vertical split" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "save" })
 
--- Packer
-map("n", "<leader>pc", "<cmd>PackerCompile<cr>", { desc = "packer compile" })
-map("n", "<leader>pd", "<cmd>PackerClean<cr>", { desc = "packer clean" })
-map("n", "<leader>pi", "<cmd>PackerInstall<cr>", { desc = "packer install" })
-map("n", "<leader>py", "<cmd>PackerSync<cr>", { desc = "packer sync" })
-map("n", "<leader>ps", "<cmd>PackerStatus<cr>", { desc = "packer status" })
-map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "packer update" })
-
 -- Bufdelete
 map("n", "<leader>d", "<cmd>Bdelete!<cr>", { desc = "close buffer" })
+map("n", "<leader>D", '<cmd>%bdelete|edit #|normal `"<cr>', { desc = "close all buffers except current" })
 
 -- Gitsigns
-map("n", "<leader>gj", function() require("gitsigns").next_hunk() end, { desc = "next hunk" })
-map("n", "<leader>gk", function() require("gitsigns").prev_hunk() end, { desc = "previous git hunk" })
-map("n", "<leader>gl", function() require("gitsigns").blame_line() end, { desc = "view git blame" })
-map("n", "<leader>gn", function() require("gitsigns").stage_hunk() end, { desc = "stage git hunk" })
-map("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, { desc = "preview git hunk" })
-map("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, { desc = "reset git hunk" })
-map("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, { desc = "reset git buffer" })
-map("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, { desc = "unstage git hunk" })
-map("n", "<leader>gd", function() require("gitsigns").diffthis() end, { desc = "view git diff" })
+map("n", "[g", function()
+	require("gitsigns").prev_hunk()
+end, { desc = "previous git hunk" })
+map("n", "]g", function()
+	require("gitsigns").next_hunk()
+end, { desc = "next hunk" })
+map("n", "<leader>gl", function()
+	require("gitsigns").blame_line()
+end, { desc = "view git blame" })
+map({ "n", "v" }, "<leader>gh", function()
+	require("gitsigns").stage_hunk()
+end, { desc = "stage git hunk" })
+map({ "n", "v" }, "<leader>gr", function()
+	require("gitsigns").reset_hunk()
+end, { desc = "reset git hunk" })
+map("n", "<leader>gR", function()
+	require("gitsigns").reset_buffer()
+end, { desc = "reset git buffer" })
+map("n", "<leader>gp", function()
+	require("gitsigns").preview_hunk()
+end, { desc = "preview git hunk" })
+map("n", "<leader>gu", function()
+	require("gitsigns").undo_stage_hunk()
+end, { desc = "unstage git hunk" })
+map("n", "<leader>gd", function()
+	require("gitsigns").diffthis()
+end, { desc = "view git diff" })
 
-map("v", "<leader>gn", function()
-	require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-end, { desc = "stage git hunk (range)" })
-map("v", "<leader>gh", function()
-	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-end, { desc = "reset git hunk (range)" })
-
--- NvimTree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "toggle explorer" })
+-- Neotree
+map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "toggle explorer" })
 
 -- Telescope
-local nvim_conf = os.getenv("HOME") .. "/.dotfiles/.config/nvim"
+local nvim_conf = os.getenv("HOME") .. "/.config/nvim"
 local dotfiles = os.getenv("HOME") .. "/.dotfiles"
 
 map("n", "<leader>ft", function()
-	require("telescope.builtin").builtin(require("telescope.themes").get_dropdown({ previewer = false }))
+	require("telescope.builtin").builtin(require("telescope.themes").get_dropdown({ previewer = true }))
 end, { desc = "search telescope builtins" })
 
 map("n", "<leader>fb", function()
@@ -175,19 +150,44 @@ map("n", "<leader>fS", function()
 	require("telescope.builtin").live_grep({ hidden = true, no_ignore = true })
 end, { desc = "search words in all files" })
 
-map("n", "<leader>fh", function() require("telescope.builtin").help_tags() end, { desc = "search help" })
-map("n", "<leader>fk", function() require("telescope.builtin").keymaps() end, { desc = "search keymaps" })
-map("n", "<leader>fo", function() require("telescope.builtin").oldfiles() end, { desc = "search history" })
-map("n", "<leader>fw", function() require("telescope.builtin").grep_string() end, { desc = "search word under cursor" })
+map("n", "<leader>fh", function()
+	require("telescope.builtin").help_tags()
+end, { desc = "search help" })
+map("n", "<leader>fk", function()
+	require("telescope.builtin").keymaps()
+end, { desc = "search keymaps" })
+map("n", "<leader>fo", function()
+	require("telescope.builtin").oldfiles()
+end, { desc = "search history" })
+map("n", "<leader>fw", function()
+	require("telescope.builtin").current_buffer_fuzzy_find()
+end, { desc = "fuzzy search current buffer" })
+map("n", "<leader>fW", function()
+	require("telescope.builtin").grep_string()
+end, { desc = "search word under cursor" })
 
-map("n", "<leader>gs", function() require("telescope.builtin").git_status() end, { desc = "git status" })
-map("n", "<leader>gb", function() require("telescope.builtin").git_branches() end, { desc = "git branches" })
-map("n", "<leader>gc", function() require("telescope.builtin").git_commits() end, { desc = "git commits" })
+map("n", "<leader>gf", function()
+	require("telescope.builtin").git_files()
+end, { desc = "git files" })
+map("n", "<leader>gs", function()
+	require("telescope.builtin").git_status()
+end, { desc = "git status" })
+map("n", "<leader>gb", function()
+	require("telescope.builtin").git_branches()
+end, { desc = "git branches" })
+map("n", "<leader>gc", function()
+	require("telescope.builtin").git_commits()
+end, { desc = "git commits" })
 
-map("n", "<leader>'", function() require("telescope.builtin").marks() end, { desc = "search marks" })
-map("n", [[<leader>"]], function() require("telescope.builtin").registers() end, { desc = "search registers" })
+map("n", "<leader>'", function()
+	require("telescope.builtin").marks()
+end, { desc = "search marks" })
+map("n", [[<leader>"]], function()
+	require("telescope.builtin").registers()
+end, { desc = "search registers" })
 
 -- Misc
 map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "lsp info" })
 map("n", "<leader>lm", "<cmd>Mason<cr>", { desc = "mason package manager" })
 map("n", "<leader>ln", "<cmd>NullLsInfo<cr>", { desc = "null-ls info" })
+map("n", "<leader>lz", "<cmd>Lazy<cr>", { desc = "lazy" })
