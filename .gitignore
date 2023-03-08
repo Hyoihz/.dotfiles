@@ -49,7 +49,6 @@ luac.out
 **/config.h
 *.orig
 *.rej
-*.json
 *.cache
 
 .config/dwmblocks/dwmblocks
