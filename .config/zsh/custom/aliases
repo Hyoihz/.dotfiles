@@ -27,4 +27,4 @@ alias mv="mv -iv"
 alias rm="rm -iv"
 
 # Custom wget hsts cache file location
-wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
