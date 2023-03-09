@@ -2,36 +2,35 @@ function add_or_update() {
     # Set update interval to a month
     local update_interval=$((30*24*60*60))
     # Get the time of last plugin update, if no last update found, set to 0
-    local last_update=$(stat -c %Y "$XDG_DATA_HOME/zsh/last_plugin_update" 2>/dev/null || echo 0)
+    local last_update=$(stat -c %Y "${XDG_DATA_HOME}/zsh/plugin_update_timestamp" 2>/dev/null || echo 0)
     # Get the current time in seconds since epoch
     local current_time=$(date +%s)
 
     local plugin="$1"
-    local basename="${plugin##*/}"
-    local dir="$XDG_DATA_HOME/zsh/plugins/$basename"
+    local basename=$(basename "$plugin")
+    local dir="${XDG_DATA_HOME}/zsh/plugins/${basename}"
 
     # If the plugin directory does not exist, clone it
-    if [[ ! -d "$dir" ]]; then
-        echo "Installing $basename plugin..."
-        git clone --depth=1 "https://github.com/$plugin" "$dir" 2>/dev/null
-        echo "Done."
-    # Update plugins if it's been longer than the update interval
-    else
-        if (( current_time - last_update > update_interval )); then
-            cd "$dir"
-            git fetch origin master
+    if [[ ! -d "${dir}" ]]; then
+        printf "Installing %s plugin...\n" "$basename"
+        git clone --depth=1 "https://github.com/${plugin}" "${dir}" 2>/dev/null
+        printf "Done.\n"
+        # Set the initial time of plugin update to the current time
+        echo "$current_time" > "${XDG_DATA_HOME}/zsh/plugin_update_timestamp"
+    # Update plugins if it's been longer than the update interval and the remote branch has changes
+    elif (( current_time - last_update > update_interval )); then
+        pushd "${dir}" >/dev/null
+        git fetch origin master
 
-            if [[ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]]; then
-                echo "It's that time of the month! Updating $basename plugin..."
-                git pull
-            fi
-
-            cd $OLDPWD
+        if [[ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]]; then
+            printf "It's that time of the month! Updating %s plugin...\n" "$basename"
+            git pull
+            # Update the time of the last plugin update to the current time
+            echo "$current_time" > "${XDG_DATA_HOME}/zsh/plugin_update_timestamp"
         fi
+
+        popd >/dev/null
     fi
     # Load the plugin's .zsh or .zsh-theme file
-    source "$dir/$basename".(zsh|zsh-theme)
-
-    # Update the time of the last plugin update to the current time
-    echo $current_time > "$XDG_DATA_HOME/zsh/last_plugin_update"
+    source "${dir}/${basename}".(zsh|zsh-theme)
 }
