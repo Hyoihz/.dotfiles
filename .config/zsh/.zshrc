@@ -59,9 +59,7 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=6 # cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=6 # cyan
 
 # Custom plugins/files
-
 source $ZDOTDIR/custom/plugins/dirpersist/dirpersist.plugin.zsh
-source $ZDOTDIR/custom/plugins/dirhistory/dirhistory.plugin.zsh
 
 source $ZDOTDIR/custom/keymaps
 source $ZDOTDIR/custom/aliases
