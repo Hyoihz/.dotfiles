@@ -5,6 +5,10 @@
 DIRSTACKSIZE=${DIRSTACKSIZE:-100}
 dirstack_file=${dirstack_file:-${XDG_STATE_HOME}/zsh/dirhistory}
 
+if [[ ! -d "$(dirname $dirstack_file)" ]]; then
+  mkdir -p "$(dirname $dirstack_file)"
+fi
+
 if [[ -f ${dirstack_file} ]] && [[ ${#dirstack[*]} -eq 0 ]] ; then
   dirstack=( ${(f)"$(< $dirstack_file)"} )
   # "cd -" won't work after login by just setting $OLDPWD, so
