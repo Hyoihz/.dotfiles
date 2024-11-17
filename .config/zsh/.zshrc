@@ -18,19 +18,19 @@ autoload -Uz compinit && compinit
 _comp_options+=(globdots) # include hidden files
 
 # Fzf
-source /usr/share/fzf/key-bindings.zsh
+source ~/.config/zsh/custom/fzf/fzf-config.zsh
 
-export FZF_DEFAULT_COMMAND="fd -HL -E .git -E node_modules"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f -t d"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+# export FZF_DEFAULT_COMMAND="fd -HL -E .git -E node_modules"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f -t d"
+# export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
 
-export FZF_DEFAULT_OPTS="--color=16,prompt:15,info:5,fg+:4,hl+:2,hl:3,marker:6 
-			 --prompt=' ' --pointer='﬌' --marker=' ' 
-			 --bind=ctrl-space:toggle --border=left --reverse 
-			 --margin=0,4,0,0"
+# export FZF_DEFAULT_OPTS="--color=16,prompt:15,info:5,fg+:4,hl+:2,hl:3,marker:6 
+# 			 --prompt=' ' --pointer='﬌' --marker=' ' 
+# 			 --bind=ctrl-space:toggle --border=left --reverse 
+# 			 --margin=0,4,0,0"
 
 # Functions
-for file in "$ZDOTDIR"/custom/functions/*; do
+for file in ~/.config/zsh/custom/functions/*; do
     source $file
 done
 
@@ -59,7 +59,7 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=6 # cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=6 # cyan
 
 # Custom plugins/files
-source $ZDOTDIR/custom/plugins/dirpersist/dirpersist.plugin.zsh
+source ~/.config/zsh/custom/plugins/dirpersist/dirpersist.plugin.zsh
 
-source $ZDOTDIR/custom/keymaps
-source $ZDOTDIR/custom/aliases
+source ~/.config/zsh/custom/keymaps
+source ~/.config/zsh/custom/aliases
