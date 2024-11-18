@@ -1,5 +1,7 @@
 KEYTIMEOUT=1
 
+bindkey -v
+
 bindkey "^A" vi-beginning-of-line # ctrl + a
 bindkey "^E" vi-end-of-line # ctrl + e
 
